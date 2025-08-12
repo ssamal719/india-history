@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>State-wise Today in History (India) — Multi-language</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>State-wise Today in History — India</h1>
+      <p class="lead">Choose a State, Date and Language. English data + automatic translations for many Indian languages.</p>
+    </header>
+
+    <div class="controls card">
+      <div class="row">
+        <label>State
+          <select id="stateSelect"></select>
+        </label>
+
+        <label>Date
+          <input id="dateInput" type="date">
+        </label>
+
+        <label>Language
+          <select id="langSelect"></select>
+        </label>
+
+        <div style="display:flex;align-items:flex-end;gap:8px">
+          <button id="goBtn">Show</button>
+          <button id="refreshBtn" class="secondary">Refresh Thumbs</button>
+        </div>
+      </div>
+    </div>
+
+    <main id="main" class="card">
+      <div id="status" class="small muted"></div>
+      <div id="events" class="events"></div>
+    </main>
+
+    <footer class="card small muted">
+      Prototype — translations use an unofficial API if you don't provide a Google Translate key. For production, add server-side translation and scheduling.
+    </footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
