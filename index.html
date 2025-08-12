@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>India State History — Interactive Map</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>India State History</h1>
+    <p>Click a state on the map or select from the list to view historical facts.</p>
+  </header>
+
+  <div class="controls">
+    <div class="map-wrap">
+      <!-- Simplified SVG map (stylized clickable regions) -->
+      <svg id="indiaMap" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Map of India">
+        <!-- Background -->
+        <rect x="0" y="0" width="1000" height="700" fill="none" />
+        <!-- A very simplified layout: rectangles approximate regions/states.
+             Each <g> has data-state matching states in events.json.
+             This is not a geographic-accurate map but provides interactive areas.
+        -->
+        <g class="state" data-state="Jammu and Kashmir"><rect x="220" y="30" width="120" height="60"></rect><text x="230" y="65">J&K</text></g>
+        <g class="state" data-state="Himachal Pradesh"><rect x="220" y="100" width="120" height="50"></rect><text x="225" y="130">Himachal</text></g>
+        <g class="state" data-state="Punjab"><rect x="180" y="160" width="120" height="50"></rect><text x="190" y="190">Punjab</text></g>
+        <g class="state" data-state="Haryana"><rect x="260" y="200" width="100" height="45"></rect><text x="270" y="230">Haryana</text></g>
+        <g class="state" data-state="Delhi"><rect x="300" y="245" width="60" height="35"></rect><text x="308" y="270">Delhi</text></g>
+
+        <g class="state" data-state="Rajasthan"><rect x="120" y="220" width="150" height="120"></rect><text x="140" y="280">Rajasthan</text></g>
+        <g class="state" data-state="Uttar Pradesh"><rect x="350" y="200" width="160" height="110"></rect><text x="380" y="260">Uttar Pradesh</text></g>
+        <g class="state" data-state="Bihar"><rect x="540" y="210" width="120" height="80"></rect><text x="560" y="255">Bihar</text></g>
+        <g class="state" data-state="Jharkhand"><rect x="670" y="240" width="90" height="70"></rect><text x="680" y="285">Jharkhand</text></g>
+
+        <g class="state" data-state="Sikkim"><rect x="630" y="170" width="60" height="40"></rect><text x="640" y="195">Sikkim</text></g>
+        <g class="state" data-state="West Bengal"><rect x="720" y="200" width="140" height="90"></rect><text x="745" y="255">West Bengal</text></g>
+
+        <g class="state" data-state="Gujarat"><rect x="70" y="350" width="140" height="90"></rect><text x="95" y="410">Gujarat</text></g>
+        <g class="state" data-state="Maharashtra"><rect x="210" y="350" width="160" height="110"></rect><text x="245" y="415">Maharashtra</text></g>
+        <g class="state" data-state="Goa"><rect x="270" y="460" width="40" height="30"></rect><text x="275" y="482">Goa</text></g>
+
+        <g class="state" data-state="Karnataka"><rect x="240" y="480" width="140" height="100"></rect><text x="275" y="540">Karnataka</text></g>
+        <g class="state" data-state="Kerala"><rect x="280" y="600" width="60" height="70"></rect><text x="285" y="640">Kerala</text></g>
+        <g class="state" data-state="Tamil Nadu"><rect x="360" y="580" width="180" height="90"></rect><text x="430" y="630">Tamil Nadu</text></g>
+        <g class="state" data-state="Andhra Pradesh"><rect x="420" y="440" width="140" height="100"></rect><text x="450" y="500">Andhra</text></g>
+        <g class="state" data-state="Telangana"><rect x="360" y="420" width="80" height="70"></rect><text x="365" y="460">Telangana</text></g>
+
+        <g class="state" data-state="Odisha"><rect x="520" y="360" width="90" height="90"></rect><text x="540" y="415">Odisha</text></g>
+
+        <g class="state" data-state="Chhattisgarh"><rect x="440" y="320" width="110" height="90"></rect><text x="460" y="375">Chhattisgarh</text></g>
+        <g class="state" data-state="Madhya Pradesh"><rect x="320" y="300" width="120" height="120"></rect><text x="340" y="360">Madhya Pradesh</text></g>
+
+        <g class="state" data-state="Assam"><rect x="820" y="240" width="120" height="70"></rect><text x="840" y="285">Assam</text></g>
+        <g class="state" data-state="Meghalaya"><rect x="800" y="310" width="80" height="50"></rect><text x="810" y="340">Meghalaya</text></g>
+        <g class="state" data-state="Tripura"><rect x="880" y="300" width="60" height="40"></rect><text x="885" y="325">Tripura</text></g>
+        <g class="state" data-state="Manipur"><rect x="900" y="260" width="60" height="40"></rect><text x="905" y="285">Manipur</text></g>
+        <g class="state" data-state="Nagaland"><rect x="860" y="220" width="60" height="40"></rect><text x="865" y="245">Nagaland</text></g>
+        <g class="state" data-state="Mizoram"><rect x="900" y="300" width="60" height="40"></rect><text x="905" y="325">Mizoram</text></g>
+
+        <!-- UTs -->
+        <g class="state" data-state="Delhi"><rect x="320" y="250" width="40" height="30"></rect><text x="322" y="270">DL</text></g>
+        <g class="state" data-state="Puducherry"><rect x="500" y="540" width="40" height="30"></rect><text x="503" y="560">PY</text></g>
+        <g class="state" data-state="Andaman and Nicobar Islands"><rect x="920" y="520" width="50" height="40"></rect><text x="922" y="545">A&N</text></g>
+        <g class="state" data-state="Chandigarh"><rect x="240" y="180" width="40" height="30"></rect><text x="243" y="200">CH</text></g>
+        <g class="state" data-state="Dadra and Nagar Haveli and Daman and Diu"><rect x="120" y="420" width="60" height="40"></rect><text x="125" y="445">DNH</text></g>
+        <g class="state" data-state="Lakshadweep"><rect x="50" y="620" width="50" height="30"></rect><text x="53" y="640">LK</text></g>
+        <g class="state" data-state="Jammu and Kashmir" transform="translate(0,0)"></g>
+        <g class="state" data-state="Ladakh"><rect x="190" y="10" width="80" height="40"></rect><text x="195" y="35">Ladakh</text></g>
+      </svg>
+    </div>
+
+    <aside class="controls-right">
+      <label for="stateSelect">Or choose state:</label>
+      <select id="stateSelect"></select>
+
+      <label for="langSelect">Language:</label>
+      <select id="langSelect">
+        <option value="en">English</option>
+        <option value="or">Odia</option>
+        <option value="hi">Hindi</option>
+        <option value="bn">Bengali</option>
+        <option value="ta">Tamil</option>
+        <option value="te">Telugu</option>
+        <option value="ml">Malayalam</option>
+        <option value="kn">Kannada</option>
+        <option value="mr">Marathi</option>
+        <option value="gu">Gujarati</option>
+        <option value="pa">Punjabi</option>
+        <option value="ur">Urdu</option>
+      </select>
+
+      <button id="loadBtn">Load History</button>
+    </aside>
+  </div>
+
+  <main>
+    <div id="historyArea">Click a state on the map or select from the dropdown and press 'Load History'.</div>
+  </main>
+
+  <footer>© 2025 India State History (prototype)</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
